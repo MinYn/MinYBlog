@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'rest_framework',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'MinYBlog.wsgi.application'
 
 
@@ -124,3 +124,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Media files - 업로드를 하는 URL과 디렉토리 설정
 MEDIA_URL = '/files/' # 업로드 할 경로
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads') # 로컬 디렉토리 어디에 저장할 것인지
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

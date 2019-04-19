@@ -6,6 +6,6 @@ from common.util.utils import user_path
 class bloglist(models.Model):
     Title = models.CharField(max_length=30000)
     SubTitle = models.CharField(max_length=200)
-    Subject = models.CharField(max_length=200)
+    Subject = models.TextField(default='')
     picture = models.ImageField(upload_to=user_path, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)

@@ -21,15 +21,18 @@
   <div class="container" >
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        {% if blog_list %}
+        <!-- Pager -->
+        <div class="clearfix infinite-container">
+          {% if blog_list %}
             {% for blog in blog_list %}
+            <div class="infinite-item">
               <div class="post-preview">
                 <a href="/post/{{ blog.id }}/">
                   <h2 class="post-title">
                     {{ blog.Title }}
                   </h2>
                   <h3 class="post-subtitle">
-                    {{ blog.Subject }}
+                    {{ blog.SubTitle }}
                   </h3>
                 </a>
                 <p class="post-meta">Posted by
@@ -37,15 +40,34 @@
                   <!--on September 24, 2019-->{{ blog.pub_date }}</p>
               </div>
               <hr>
+            </div>
             {% endfor %}
-        {% else %}
-            <p>게시글이 없습니다.</p>
-        {% endif %}
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          {% else %}
+              <p>게시글이 없습니다.</p>
+          {% endif %}
+
+          {% if blog_list.has_next %}
+          <a class="infinite-more-link btn btn-primary float-right" href="?page={{ blog_list.next_page_number }}">Older Posts &rarr;</a>
+          {% endif %}
+          <div class="loading" style="display: none;">
+            Loading...
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+  </script>
 {% endblock content %}
