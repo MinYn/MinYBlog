@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ blog_post.picture.url }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{ blog_post.Title }}</h1>
+            <h2 class="subheading">{{ blog_post.SubTitle }}</h2>
+            <span class="meta">Posted by
+              <a href="mailto:ysmysm3@naver.com">윤석민</a>
+              {{ blog_post.pub_date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          {{ blog_post.Subject }}
+        </div>
+      </div>
+    </div>
+  </article>
+{% endblock content %}

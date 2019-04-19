@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>MinY's Blog</h1>
+            <span class="subheading">저의 블로그에 방문해주셔서 감사합니다!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container" >
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% if blog_list %}
+            {% for blog in blog_list %}
+              <div class="post-preview">
+                <a href="/post/{{ blog.id }}/">
+                  <h2 class="post-title">
+                    {{ blog.Title }}
+                  </h2>
+                  <h3 class="post-subtitle">
+                    {{ blog.Subject }}
+                  </h3>
+                </a>
+                <p class="post-meta">Posted by
+                  <a href="mailto:ysmysm3@naver.com">윤석민</a>
+                  <!--on September 24, 2019-->{{ blog.pub_date }}</p>
+              </div>
+              <hr>
+            {% endfor %}
+        {% else %}
+            <p>게시글이 없습니다.</p>
+        {% endif %}
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
