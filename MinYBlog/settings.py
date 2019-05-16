@@ -25,11 +25,15 @@ SECRET_KEY = '+^r2x7j3vtpz2@vtu&sy08_+ids^!h_h!ezq!j%zrdw0mlw&26'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.74.1.27']
+ALLOWED_HOSTS = ['10.74.1.27','127.0.0.1','localhost']
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'django.contrib.auth.base_user',
+    # 'django.contrib.auth.models',
+    # 'django.contrib.auth.forms',
+    # 'django.contrib.auth.views',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

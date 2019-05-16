@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^contact/', main_view.contact),
     url(r'^post/(?P<post_id>\d+)/$', main_view.post),
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^login/', LoginView.as_view()),
     url(r'^summernote/', include('django_summernote.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
