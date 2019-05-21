@@ -134,3 +134,26 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+LOGGING = {
+    'version': 1,
+    'diable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)8s] %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+    },
+    'loggers': {
+        'django': {
+            'level': 'DEBUG',               # 로거의 기본 레벨. 이 레벨이 우선시 된다.
+            'handlers': ['console']
+        },
+    },
+}
